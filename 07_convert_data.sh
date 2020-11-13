@@ -1,23 +1,35 @@
 #!/bin/bash
 #############################################################################
 GEOMETRYFILE="/home/lhep/PACMAN/larpix-geometry/larpixgeometry/layouts/layout-2.4.0.yaml"
-#CONFIGURATIONFILE="/home/lhep/PACMAN/DAQ/SingleCube_Oct2020/config_files/config-1-1-11-2020_10_16_19_37_11_CEST.json"
 CONFIGURATIONFILE="/home/lhep/PACMAN/larpix-v2-testing-scripts/event-display/evd_configs/evd_config_20-10-26_10-48-37.json"
-PEDESTALFILE="/home/lhep/PACMAN/DAQ/SingleCube_Oct2020/pedestalRuns/datalog_2020_11_01_08_42_30_CET_evd_ped.json"
+PEDESTALFILE="/home/lhep/PACMAN/DAQ/SingleCube_Oct2020/pedestalRuns/datalog_2020_10_31_11_35_10_CET_evd_ped.json"
 DATAFILEPATH="/home/lhep/PACMAN/DAQ/SingleCube_Oct2020/dataRuns/rawData"
-DATAFILE="datalog_2020_11_01_07_56_59_CET_.h5"
+DATAFILE="datalog_2020_10_31_11_41_03_CET_.h5"
 #OUTPUTPATH="/home/lhep/PACMAN/DAQ/SingleCube_Oct2020/dataRuns/convertedData"
 OUTPUTPATH="/home/lhep/PACMAN"
 BUFFER_SIZE="38400"
-EVENT_DT="1818"        # drift window [0.1us]
+EVENT_DT="1326"        # drift window [0.1us] (see table below)
 NHIT_CUT="50"          # min. number of hits requested for an event
 MAX_PACKETS="-1"
-VD="1.648"             # drift velocity [mm/us]
+VD="2.262"             # drift velocity [mm/us] (see table below)
 CLOCK_PERIOD="0.1"
 DBSCAN_EPS="14.0"
 DBSCAN_MIN_SAMPLES="5"
 #############################################################################
-source /home/roman/software/root/build/bin/thisroot.sh
+# Drift velocities and windows:
+# ---------------------------------
+# 0.10 kV/cm --> vd = 0.532 mm/us --> event_dt = 563.9 us
+# 0.20 kV/cm --> vd = 0.932 mm/us --> event_dt = 321.9 us
+# 0.25 kV/cm --> vd = 1.091 mm/us --> event_dt = 275.0 us
+# 0.30 kV/cm --> vd = 1.232 mm/us --> event_dt = 243.5 us
+# 0.40 kV/cm --> vd = 1.459 mm/us --> event_dt = 205.6 us
+# 0.50 kV/cm --> vd = 1.647 mm/us --> event_dt = 180.1 us
+# 0.60 kV/cm --> vd = 1.807 mm/us --> event_dt = 166.0 us
+# 0.70 kV/cm --> vd = 1.944 mm/us --> event_dt = 154.3 us
+# 0.80 kV/cm --> vd = 2.062 mm/us --> event_dt = 145.5 us
+# 0.90 kV/cm --> vd = 2.168 mm/us --> event_dt = 138.4 us
+# 1.00 kV/cm --> vd = 2.262 mm/us --> event_dt = 132.6 us
+#############################################################################
 
 #WORKDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 WORKDIR='/home/lhep/PACMAN'
