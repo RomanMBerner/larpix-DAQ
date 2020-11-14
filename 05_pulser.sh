@@ -14,7 +14,7 @@ START_DAC=95      # Starting DAC value to issue test pulses from (default=95)
 #WORKDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 WORKDIR='/home/lhep/PACMAN'
 #cd $WORKDIR/DAQ/config_files/
-echo Using config file $CONFIGFILE
+echo Using configurations from $THRESHOLDFILE
 
 cd $WORKDIR/larpix-10x10-scripts
 python3.6 -i internal_pulse.py --config_name $THRESHOLDFILES --controller_config controller/$CONTROLLER_CONFIG --pulse_dac $PULSE_DAC --n_pulses $N_PULSES --runtime $RUNTIME #--start_dac $START_DAC #--chip_key $CHIP_KEY #--channels $CHANNELS
