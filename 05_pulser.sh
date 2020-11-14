@@ -2,7 +2,7 @@
 #############################################################################
 EXPERIMENT='SingleModule_Nov2020'
 CONTROLLER_CONFIG='network-10x10-tile-singlecube.json' # Hydra network configuration file
-CONFIGFILE='$WORKDIR/DAQ/'$EXPERIMENT'/TestPulse_10Nov2020/' #10x10chips_without_pump_updated/" # Config file or directory to load chip configs from (take last produced config file, see below)
+THRESHOLDFILES=$WORKDIR'/DAQ/'$EXPERIMENT'/thresholds/' # /TestPulse_10Nov2020/' #10x10chips_without_pump_updated/" # Config file or directory to load chip configs from (take last produced config file, see below)
 CHIP_KEY='1-1-11' # if used, uncomment below
 PULSE_DAC=3       # Amplitude for test pulses in DAC counts (default=10)
 N_PULSES=10       # Number of test pulses to issue on each channel (default=10)
@@ -17,8 +17,7 @@ WORKDIR='/home/lhep/PACMAN'
 echo Using config file $CONFIGFILE
 
 cd $WORKDIR/larpix-10x10-scripts
-python3.6 -i internal_pulse.py --config_name $CONFIGFILE --controller_config controller/$CONTROLLER_CONFIG --pulse_dac $PULSE_DAC --n_pulses $N_PULSES --runtime $RUNTIME #--start_dac $START_DAC #--chip_key $CHIP_KEY #--channels $CHANNELS
-cd $WORKDIR/larpix-10x10-scripts
+python3.6 -i internal_pulse.py --config_name $THRESHOLDFILES --controller_config controller/$CONTROLLER_CONFIG --pulse_dac $PULSE_DAC --n_pulses $N_PULSES --runtime $RUNTIME #--start_dac $START_DAC #--chip_key $CHIP_KEY #--channels $CHANNELS
 
 unset -v DATAFILE
 DATAFILE=$(ls -tr datalog* | tail -n 1)
