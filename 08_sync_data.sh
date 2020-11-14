@@ -6,6 +6,7 @@
 #
 SOURCE_DIR='/home/lhep/PACMAN/DAQ'
 USR='lhep'
+IP=''
 HOST='lhepacube11.lhep.unibe.ch'
 SYNC_DIR='/data/SingleCube_Oct2020/LArPix'
 ################################################################
