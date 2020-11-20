@@ -15,6 +15,7 @@ VD='2.262'             # drift velocity [mm/us] (see table below)
 CLOCK_PERIOD='0.1'
 DBSCAN_EPS='14.0'
 DBSCAN_MIN_SAMPLES='5'
+ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/ElecLifetime_SingleCube_Bern.root'
 #############################################################################
 # Drift velocities and windows:
 # ---------------------------------
@@ -50,7 +51,21 @@ unset -v OUTPUTFILENAME
 OUTPUTFILENAME=${DATAFILE:0:-3}'evd.h5'
 echo 'Output filename:' $OUTPUTFILENAME
 
-python3.6 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py -i $DATAFILEPATH/$DATAFILE -o $OUTPUTPATH/$OUTPUTFILENAME -g $GEOMETRYFILE -p $PEDESTALFILE -c $CONFIGURATIONFILE -b $BUFFER_SIZE --event_dt $EVENT_DT --nhit_cut $NHIT_CUT -n $MAX_PACKETS --vd $VD --clock_period $CLOCK_PERIOD --dbscan_eps $DBSCAN_EPS --dbscan_min_samples $DBSCAN_MIN_SAMPLES #--electron_lifetime_file /home/lhep/PACMAN/ElecLifetime_SingleCube_Bern.root
+python3.6 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py \
+                -i $DATAFILEPATH/$DATAFILE \
+                -o $OUTPUTPATH/$OUTPUTFILENAME \
+                -g $GEOMETRYFILE \
+                -p $PEDESTALFILE \
+                -c $CONFIGURATIONFILE \
+                -b $BUFFER_SIZE \
+                --event_dt $EVENT_DT \
+                --nhit_cut $NHIT_CUT \
+                -n $MAX_PACKETS \
+                --vd $VD \
+                --clock_period $CLOCK_PERIOD \
+                --dbscan_eps $DBSCAN_EPS \
+                --dbscan_min_samples $DBSCAN_MIN_SAMPLES
+                #--electron_lifetime_file $ELECTRONLIFETIME_FILE
 
 cd $WORKDIR/DAQ/$EXPERIMENT/dataRuns/rawData
 mv $OUTPUTFILENAME ../convertedData/$OUTPUTFILENAME

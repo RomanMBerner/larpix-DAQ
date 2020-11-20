@@ -17,7 +17,14 @@ WORKDIR='/home/lhep/PACMAN'
 echo Using configurations from $THRESHOLDFILE
 
 cd $WORKDIR/larpix-10x10-scripts
-python3.6 -i internal_pulse.py --config_name $THRESHOLDFILES --controller_config controller/$CONTROLLER_CONFIG --pulse_dac $PULSE_DAC --n_pulses $N_PULSES --runtime $RUNTIME #--start_dac $START_DAC #--chip_key $CHIP_KEY #--channels $CHANNELS
+python3.6 -i internal_pulse.py --config_name $THRESHOLDFILES \
+                               --controller_config controller/$CONTROLLER_CONFIG \
+                               --pulse_dac $PULSE_DAC \
+                               --n_pulses $N_PULSES \
+                               --runtime $RUNTIME
+                               #--start_dac $START_DAC
+                               #--chip_key $CHIP_KEY
+                               #--channels $CHANNELS
 
 unset -v DATAFILE
 DATAFILE=$(ls -tr datalog* | tail -n 1)
@@ -27,6 +34,6 @@ echo 'Pulser file saved in' $WORKDIR'/DAQ/'$EXPERIMENT'/pulser/'$DATAFILE
 # To plot output of a single chip:
 # Note: Change datafiles in /larpix-v2-testing-scripts/plotting-scripts/pulser_config_file.json
 # cd $WORKDIR/larpix-v2-testing-scripts/plotting-scripts/
-# python2.7 -i plot_testpulse.py 1000000 $WORKDIR/larpix-v2-testing-scripts/plotting-scripts/pulser_config_file.json
+# python3.6 -i plot_testpulse.py 1000000 $WORKDIR/larpix-v2-testing-scripts/plotting-scripts/pulser_config_file.json
 
 cd $WORKDIR/larpix-DAQ

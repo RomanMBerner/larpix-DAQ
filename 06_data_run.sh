@@ -12,7 +12,10 @@ WORKDIR='/home/lhep/PACMAN'
 echo 'Using configurations from' $THRESHOLDFILES
 
 cd $WORKDIR/larpix-10x10-scripts
-python3.6 -i start_run.py --config_name $THRESHOLDFILES --controller_config controller/$CONTROLLER_CONFIG --runtime $RUNTIME --outdir $OUTDIR #&>/dev/null &!
+python3.6 -i start_run.py --config_name $THRESHOLDFILES \
+                          --controller_config controller/$CONTROLLER_CONFIG \
+                          --runtime $RUNTIME \
+                          --outdir $OUTDIR #&>/dev/null &!
 
 ##LOGGERFILE=$(ls -tr datalog* | tail -n 1)
 ##mv $LOGGERFILE $WORKDIR/DAQ/$EXPERIMENT/loggerFiles/$LOGGERFILE
