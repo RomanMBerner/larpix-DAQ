@@ -5,7 +5,7 @@ CONTROLLER_CONFIG='network-10x10-tile-singlecube.json' # Hydra network configura
 BASE_CONFIG='' # Chip configuration to load prior to threshold scan (default=configs/autothreshold_base.json)
 CHIP_KEY='1-2-42'       # if used, uncomment below
 CHANNELS='[0,1]'         # if used, uncomment below
-DISABLED_CHANNELS=$(cat /home/lhep/PACMAN/larpix-10x10-scripts/disabled_channels_cold_10x10chips.json)
+DISABLED_CHANNELS=$(cat /home/lhep/PACMAN/larpix-10x10-scripts/disabled_channels_cold_10x10_chips_2020_11_25.json)
 RUNTIME=1                # Period to measure rate for (seconds, default=1)
 TARGET_RATE=2            # Target max rate for individual channel (Hz, default=2)
 DISABLE_THRESHOLD=20     # Maximum rate allowed with trim at 31 (Hz, default=20)
