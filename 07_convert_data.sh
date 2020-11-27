@@ -4,22 +4,21 @@
 EXPERIMENT='SingleModule_Nov2020'
 GEOMETRYFILE='/home/lhep/PACMAN/larpix-geometry/larpixgeometry/layouts/layout-2.4.0.yaml'
 CONFIGURATIONFILE='/home/lhep/PACMAN/larpix-v2-testing-scripts/event-display/evd_configs/evd_config_20-10-26_10-48-37.json'
-PEDESTALFILE='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/pedestalRuns/datalog_2020_10_31_10_47_25_CET_evd_ped.json'
+PEDESTALFILE='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/pedestalRuns/datalog_2020_11_26_10_11_58_CET_evd_ped.json'
 DATAFILEPATH='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/dataRuns/rawData'
-DATAFILE='datalog_2020_11_25__CET_.h5'
+DATAFILE='datalog_2020_11_26_12_38_10_CET_.h5'
 OUTPUTPATH='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/dataRuns/convertedData'
 BUFFER_SIZE='38400'
-EVENT_DT='1384'        # drift window [0.1us] (see table below)
+EVENT_DT='1833'        # drift window [0.1us] (see table below)
 NHIT_CUT='50'          # min. number of hits requested for an event
 MAX_PACKETS='-1'
-VD='2.168'             # drift velocity [mm/us] (see table below)
+VD='1.648'             # drift velocity [mm/us] (see table below)
 CLOCK_PERIOD='0.1'
 DBSCAN_EPS='14.0'
 DBSCAN_MIN_SAMPLES='5'
 ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/ElecLifetime_SingleCube_Bern.root'
 #############################################################################
-# Drift velocities and windows:
-# ---------------------------------
+# Drift velocities and windows for SingleCube_Oct2020 experiment:
 # 0.10 kV/cm --> vd = 0.532 mm/us --> event_dt = 563.9 us
 # 0.20 kV/cm --> vd = 0.932 mm/us --> event_dt = 321.9 us
 # 0.25 kV/cm --> vd = 1.091 mm/us --> event_dt = 275.0 us
@@ -32,6 +31,14 @@ ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/ElecLifetime_SingleCube_Bern.root'
 # 0.90 kV/cm --> vd = 2.168 mm/us --> event_dt = 138.4 us
 # 1.00 kV/cm --> vd = 2.262 mm/us --> event_dt = 132.6 us
 #############################################################################
+# Drift velocities and windows for SingleCube_Oct2020 experiment:
+# 0.2500 kV/cm --> vd = 1.092 mm/us --> event_dt = 293.04 us
+# 0.2508 kV/cm --> vd = 1.094 mm/us --> event_dt = 292.50 us
+# 0.5000 kV/cm --> vd = 1.648 mm/us --> event_dt = 194.17 us
+# 0.7011 kV/cm --> vd = 1.942 mm/us --> event_dt = 164.78 us
+# 0.7500 kV/cm --> vd = 2.002 mm/us --> event_dt = 160.00 us
+#############################################################################
+
 
 #WORKDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 WORKDIR='/home/lhep/PACMAN'
@@ -52,7 +59,7 @@ unset -v OUTPUTFILENAME
 OUTPUTFILENAME=${DATAFILE:0:-3}'evd.h5'
 echo 'Output filename:' $OUTPUTFILENAME
 
-rm $WORKDIR/DAQ/$EXPERIMENT/dataRuns/convertedData/$OUTPUTFILENAME
+#rm $WORKDIR/DAQ/$EXPERIMENT/dataRuns/convertedData/$OUTPUTFILENAME
 
 python3.6 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py \
                 -i $DATAFILEPATH/$DATAFILE \

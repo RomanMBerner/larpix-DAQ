@@ -5,7 +5,7 @@ CONTROLLER_CONFIG='network-10x10-tile-singlecube.json' # Hydra network configura
 RUNTIME=1800 # Time duration of the run (in seconds) (default=1800)
 THRESHOLDFILES=$WORKDIR'/DAQ/'$EXPERIMENT'/thresholds/' # single file or directory
 OUTDIR=$WORKDIR'/DAQ/'$EXPERIMENT'/dataRuns/rawData/'
-DISABLED_CHANNELS=$(cat /home/lhep/PACMAN/larpix-10x10-scripts/disabled_channels_cold_10x10_chips_2020_11_25.json)
+DISABLED_CHANNELS=$(cat /home/lhep/PACMAN/larpix-10x10-scripts/disabled_channels_cold_10x10_chips_2020_11_27.json)
 #############################################################################
 
 #WORKDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
