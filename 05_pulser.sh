@@ -1,19 +1,20 @@
 #!/bin/bash
 #############################################################################
 EXPERIMENT='SingleModule_Nov2020'
-CONTROLLER_CONFIG='network-10x10-tile-singlecube.json' # Hydra network configuration file
-THRESHOLDFILES=$WORKDIR'/DAQ/'$EXPERIMENT'/thresholds/' # /TestPulse_10Nov2020/' #10x10chips_without_pump_updated/" # Config file or directory to load chip configs from (take last produced config file, see below)
-CHIP_KEY='1-1-11' # if used, uncomment below
-PULSE_DAC=27       # Amplitude for test pulses in DAC counts (default=10)
-N_PULSES=50       # Number of test pulses to issue on each channel (default=10)
-CHANNELS='[0,1]'  # List of channels to issue test pulses to issue on each channel
-RUNTIME=0.010       # Time window to collect data after issuing each test pulse (in seconds) (default=0.1)
-START_DAC=95      # Starting DAC value to issue test pulses from (default=95)
-#TRACK_STATS='--track_stats' # keep track of channel-by-channel triggering stats and print a summary (comment out to disable)
+CONTROLLER_CONFIG='network-10x10-tile-singlecube.json'  # Hydra network configuration file
+WORKDIR='/home/lhep/PACMAN'
+THRESHOLDFILES=$WORKDIR'/DAQ/'$EXPERIMENT'/thresholds/' # Config file or directory to load chip configs from (if given a folder, it will take the last produced config files)
+CHIP_KEY='1-1-11'                                       # if used, uncomment below
+PULSE_DAC=13                                            # Amplitude for test pulses in DAC counts (default=10)
+N_PULSES=10                                             # Number of test pulses to issue on each channel (default=10)
+CHANNELS='[0,1]'                                        # List of channels to issue test pulses to issue on each channel
+RUNTIME=0.10                                            # Time window to collect data after issuing each test pulse (in seconds) (default=0.1)
+START_DAC=95                                            # Starting DAC value to issue test pulses from (default=95)
+TRACK_STATS='--track_stats'                             # keep track of channel-by-channel triggering stats and print a summary (comment out to disable)
 #############################################################################
 
 #WORKDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-WORKDIR='/home/lhep/PACMAN'
+#WORKDIR='/home/lhep/PACMAN'
 #cd $WORKDIR/DAQ/config_files/
 echo Using configurations from $THRESHOLDFILE
 
