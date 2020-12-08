@@ -3,20 +3,20 @@
 #EXPERIMENT='SingleCube_Oct2020'
 EXPERIMENT='SingleModule_Nov2020'
 GEOMETRYFILE='/home/lhep/PACMAN/larpix-geometry/larpixgeometry/layouts/layout-2.4.0.yaml'
-CONFIGURATIONFILE='/home/lhep/PACMAN/larpix-v2-testing-scripts/event-display/evd_configs/evd_config_20-10-26_10-48-37.json'
+CONFIGURATIONFILE='/data/'$EXPERIMENT'/LArPix/config_files/evd_config_20-11-11_16-19-15.json'
 PEDESTALFILE='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/pedestalRuns/datalog_2020_11_29_11_12_31_CET_evd_ped.json'
 DATAFILEPATH='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/dataRuns/rawData'
-DATAFILE='datalog_2020_11_29_12_26_47_CET_.h5'
+DATAFILE='datalog_2020_11_29_10_29_51_CET_.h5'
 OUTPUTPATH='/home/lhep/PACMAN/DAQ/'$EXPERIMENT'/dataRuns/convertedData'
 BUFFER_SIZE='38400'
-EVENT_DT='1415'        # drift window [0.1us] (see table below)
+EVENT_DT='1942'        # drift window [0.1us] (see table below)
 NHIT_CUT='50'          # min. number of hits requested for an event
 MAX_PACKETS='-1'
-VD='2.261'             # drift velocity [mm/us] (see table below)
+VD='1.648'             # drift velocity [mm/us] (see table below)
 CLOCK_PERIOD='0.1'
 DBSCAN_EPS='20.0'      # 14
 DBSCAN_MIN_SAMPLES='5'
-ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/ElecLifetime_SingleCube_Bern.root'
+#ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/ElecLifetime_SingleCube_Bern.root'
 #############################################################################
 # Drift velocities and windows for SingleCube_Oct2020 experiment:
 # 0.10 kV/cm --> vd = 0.532 mm/us --> event_dt = 563.9 us
@@ -60,7 +60,7 @@ unset -v OUTPUTFILENAME
 OUTPUTFILENAME=${DATAFILE:0:-3}'evd.h5'
 echo 'Output filename:' $OUTPUTFILENAME
 
-#rm $WORKDIR/DAQ/$EXPERIMENT/dataRuns/convertedData/$OUTPUTFILENAME
+rm $WORKDIR/DAQ/$EXPERIMENT/dataRuns/convertedData/$OUTPUTFILENAME
 
 python3.6 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py \
                 -i $DATAFILEPATH/$DATAFILE \
