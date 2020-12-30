@@ -4,8 +4,8 @@
 EXPERIMENT='SingleModule_Nov2020'
 GEOMETRYFILE='/home/lhep/PACMAN/larpix-geometry/larpixgeometry/layouts/layout-2.4.0.yaml'
 CONFIGURATIONFILE='/data/'$EXPERIMENT'/LArPix/config_files/evd_config_20-11-11_16-19-15.json'
-PEDESTALFILE='/data/'$EXPERIMENT'/LArPix/pedestalRuns/datalog_2020_11_29_13_00_07_CET_evd_ped.json'
-DATAFILE='datalog_2020_11_29_12_22_02_CET_.h5'
+PEDESTALFILE='/data/'$EXPERIMENT'/LArPix/pedestalRuns/datalog_2020_11_30_01_30_31_CET_evd_ped.json'
+DATAFILE='datalog_2020_11_30_02_07_09_CET_.h5'
 EFIELD='0.5'           # E-field intensity [kV/cm]
 DATAFILEPATH='/data/'$EXPERIMENT'/LArPix/dataRuns/rawData'
 OUTPUTPATH='/data/'$EXPERIMENT'/LArPix/dataRuns/convertedData'
@@ -31,49 +31,49 @@ ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/eLifetime_files/ElecLifetime_Module0HV.
 # 1.00 kV/cm --> vd = 2.262 mm/us --> event_dt = 1326 [0.1 us]
 #############################################################################
 # Drift velocities and windows for SingleModule_Nov2020 experiment:
-# 0.1 kV/cm --> vd = 0.0535 mm/us --> event_dt = 5981 [0.1 us]
-# 0.2 kV/cm --> vd = 0.0933 mm/us --> event_dt = 3430 [0.1 us]
-# 0.3 kV/cm --> vd = 0.1230 mm/us --> event_dt = 2602 [0.1 us]
-# 0.4 kV/cm --> vd = 0.1461 mm/us --> event_dt = 2190 [0.1 us]
-# 0.5 kV/cm --> vd = 0.1648 mm/us --> event_dt = 1942 [0.1 us]
-# 0.6 kV/cm --> vd = 0.1806 mm/us --> event_dt = 1772 [0.1 us]
-# 0.7 kV/cm --> vd = 0.1941 mm/us --> event_dt = 1649 [0.1 us]
-# 0.8 kV/cm --> vd = 0.2060 mm/us --> event_dt = 1553 [0.1 us]
-# 0.9 kV/cm --> vd = 0.2166 mm/us --> event_dt = 1477 [0.1 us]
-# 1.0 kV/cm --> vd = 0.2261 mm/us --> event_dt = 1415 [0.1 us]
+# 0.1 kV/cm --> vd = 0.535 mm/us --> event_dt = 5981 [0.1 us]
+# 0.2 kV/cm --> vd = 0.933 mm/us --> event_dt = 3430 [0.1 us]
+# 0.3 kV/cm --> vd = 1.230 mm/us --> event_dt = 2602 [0.1 us]
+# 0.4 kV/cm --> vd = 1.461 mm/us --> event_dt = 2190 [0.1 us]
+# 0.5 kV/cm --> vd = 1.648 mm/us --> event_dt = 1942 [0.1 us]
+# 0.6 kV/cm --> vd = 1.806 mm/us --> event_dt = 1772 [0.1 us]
+# 0.7 kV/cm --> vd = 1.941 mm/us --> event_dt = 1649 [0.1 us]
+# 0.8 kV/cm --> vd = 2.060 mm/us --> event_dt = 1553 [0.1 us]
+# 0.9 kV/cm --> vd = 2.166 mm/us --> event_dt = 1477 [0.1 us]
+# 1.0 kV/cm --> vd = 2.261 mm/us --> event_dt = 1415 [0.1 us]
 #############################################################################
 
 # Set parameters related to the electric field intensity
 if [ $EFIELD == 0.1 ]; then
     EVENT_DT='5981'
-    VD='0.0535'
+    VD='0.535'
 elif [ $EFIELD == 0.2 ]; then
     EVENT_DT='3430'
-    VD='0.0933'
+    VD='0.933'
 elif [ $EFIELD == 0.3 ]; then
     EVENT_DT='2602'
-    VD='0.1230'
+    VD='1.230'
 elif [ $EFIELD == 0.4 ]; then
     EVENT_DT='2190'
-    VD='0.1461'
+    VD='1.461'
 elif [ $EFIELD == 0.5 ]; then
     EVENT_DT='1942'
-    VD='0.1648'
+    VD='1.648'
 elif [ $EFIELD == 0.6 ]; then
     EVENT_DT='1772'
-    VD='0.1806'
+    VD='1.806'
 elif [ $EFIELD == 0.7 ]; then
     EVENT_DT='1649'
-    VD='0.1941'
+    VD='1.941'
 elif [ $EFIELD == 0.8 ]; then
     EVENT_DT='1553'
-    VD='0.2060'
+    VD='2.060'
 elif [ $EFIELD == 0.9 ]; then
     EVENT_DT='1477'
-    VD='0.2166'
+    VD='2.166'
 elif [ $EFIELD == 1.0 ]; then
     EVENT_DT='1415'
-    VD='0.2261'
+    VD='2.261'
 else
     echo 'WARNING: E-field intensity not properly set!'
 fi
@@ -103,7 +103,7 @@ unset -v OUTPUTFILENAME
 OUTPUTFILENAME=${DATAFILE:0:-3}'evd.h5'
 echo 'Output file:   ' $OUTPUTFILENAME
 
-rm /data/$EXPERIMENT/LArPix/dataRuns/convertedData/$OUTPUTFILENAME
+#rm /data/$EXPERIMENT/LArPix/dataRuns/convertedData/$OUTPUTFILENAME
 
 python3.6 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py \
                 -i $DATAFILEPATH/$DATAFILE \
