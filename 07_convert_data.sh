@@ -1,21 +1,22 @@
 #!/bin/bash
 #############################################################################
-#EXPERIMENT='SingleCube_Oct2020'
-EXPERIMENT='SingleModule_Nov2020'
-GEOMETRYFILE='/home/lhep/PACMAN/larpix-geometry/larpixgeometry/layouts/layout-2.4.0.yaml'
-CONFIGURATIONFILE='/data/'$EXPERIMENT'/LArPix/config_files/evd_config_20-11-11_16-19-15.json'
-PEDESTALFILE='/data/'$EXPERIMENT'/LArPix/pedestalRuns/datalog_2020_11_30_01_30_31_CET_evd_ped.json'
+EXPERIMENT='SingleModule_March2021'
+WORKDIR='/home/daq/PACMAN'
+DATADIR='/data/LArPix'
+GEOMETRYFILE=$WORKDIR'/larpix-geometry/larpixgeometry/layouts/layout-2.4.0.yaml'
+CONFIGURATIONFILE=$DATADIR'/'$EXPERIMENT'/config_files/evd_config_20-11-11_16-19-15.json'
+PEDESTALFILE=$DATADIR'/'$EXPERIMENT'/pedestalRuns/datalog_2020_11_30_01_30_31_CET_evd_ped.json'
 DATAFILE='datalog_2020_11_30_02_07_09_CET_.h5'
 EFIELD='0.5'           # E-field intensity [kV/cm]
-DATAFILEPATH='/data/'$EXPERIMENT'/LArPix/dataRuns/rawData'
-OUTPUTPATH='/data/'$EXPERIMENT'/LArPix/dataRuns/convertedData'
+DATAFILEPATH=$DATADIR'/'$EXPERIMENT'/dataRuns/rawData'
+OUTPUTPATH=$DATADIR'/'$EXPERIMENT'/dataRuns/convertedData'
 BUFFER_SIZE='38400'
 NHIT_CUT='50'          # min. number of hits requested for an event
 MAX_PACKETS='-1'
 CLOCK_PERIOD='0.1'
 DBSCAN_EPS='20.0'      # 14
 DBSCAN_MIN_SAMPLES='5'
-ELECTRONLIFETIME_FILE='/home/lhep/PACMAN/eLifetime_files/ElecLifetime_Module0HV.root'
+ELECTRONLIFETIME_FILE='/home/daq/PACMAN/eLifetimeFiles/ElecLifetime_Module0HV.root'
 #############################################################################
 # Drift velocities and windows for SingleCube_Oct2020 experiment:
 # 0.10 kV/cm --> vd = 0.532 mm/us --> event_dt = 5639 [0.1 us]
@@ -83,16 +84,12 @@ echo 'EFIELD   =' $EFIELD
 echo 'EVENT_DT =' $EVENT_DT
 echo 'VD       =' $VD
 
-
-#WORKDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-WORKDIR='/home/lhep/PACMAN'
-
-#cd $WORKDIR/DAQ/$EXPERIMENT/dataRuns/rawData/
+#cd $DATADIR/$EXPERIMENT/dataRuns/rawData/
 #unset -v DATAFILE
 #DATAFILE=$(ls -tr datalog* | tail -n 1)
 echo 'Data file:     ' $DATAFILE
 
-#cd $WORKDIR/DAQ/$EXPERIMENT/pedestalRuns/
+#cd $DATADIR/$EXPERIMENT/pedestalRuns/
 #unset -v PEDESTALFILE
 #PEDESTALFILE=$(ls -tr datalog* | tail -n 1)
 echo 'Pedestal file: ' $PEDESTALFILE
@@ -103,9 +100,9 @@ unset -v OUTPUTFILENAME
 OUTPUTFILENAME=${DATAFILE:0:-3}'evd.h5'
 echo 'Output file:   ' $OUTPUTFILENAME
 
-#rm /data/$EXPERIMENT/LArPix/dataRuns/convertedData/$OUTPUTFILENAME
+#rm $DATADIR/$EXPERIMENT/dataRuns/convertedData/$OUTPUTFILENAME
 
-python3.6 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py \
+python3 $WORKDIR/larpix-v2-testing-scripts/event-display/to_evd_file.py \
                 -i $DATAFILEPATH/$DATAFILE \
                 -o $OUTPUTPATH/$OUTPUTFILENAME \
                 -g $GEOMETRYFILE \

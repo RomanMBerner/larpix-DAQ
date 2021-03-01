@@ -2,9 +2,9 @@
 ################################################################
 # Bash script to copy the files produced by the charge r/o
 # to a sync directory. Enter SOURCE_DIR and SYNC_DIR below.
-# Last modified: 2020-11-01 by rberner.
+# Last modified: 2021-03-01 by rberner.
 #
-SOURCE_DIR='/home/lhep/PACMAN/DAQ'
+SOURCE_DIR='/home/daq/PACMAN/data'
 USR='lhep'
 IP=''
 HOST='lhepacube11.lhep.unibe.ch'
